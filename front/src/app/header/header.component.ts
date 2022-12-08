@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
-import {RegisterRestaurantComponent} from "../register-restaurant/register-restaurant.component";
 
 @Component({
   selector: 'app-header',
@@ -8,13 +7,9 @@ import {RegisterRestaurantComponent} from "../register-restaurant/register-resta
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
+  speciality: string;
   constructor(private matDialog: MatDialog) { }
 
   ngOnInit(): void { }
-
-  onCategoriesClick(){
-    this.matDialog.open(RegisterRestaurantComponent)
-  }
 
 }

@@ -1,5 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import * as L from 'leaflet';
+import axios from 'axios';
+import { HttpClient } from "@angular/common/http";
+
+
+export interface Specialite{
+  specialite: string, pays: string, capitale: string, lattitude:number, longitude: number,
+}
 
 @Component({
   selector: 'app-map',
@@ -10,6 +17,11 @@ export class MapComponent implements OnInit {
 
   private map: L.Map;
   private centroid: L.LatLngExpression = [48.856614, 2.3522219]; //
+
+
+  public getData(){
+    return this.http.get<Specialite[]>('http://localhost:5000/specialite')
+  }
 
   private initMap(): void {
     this.map = L.map('map', {
@@ -29,9 +41,18 @@ export class MapComponent implements OnInit {
       x => L.marker(x as L.LatLngExpression)
     );
     tiles.addTo(this.map);
+
+    this.getData().subscribe((data) => {
+      for (const item of data){
+        const marker = L.marker([item.lattitude,item.longitude]).addTo(this.map)
+        const txt = `${item.pays}, Culinary Speciality : ${item.specialite}`;
+        marker.bindPopup(txt);
+      }
+    });
   }
 
-  constructor() { }
+  constructor(public http: HttpClient) {
+  }
 
   ngOnInit(): void {
     this.initMap();
