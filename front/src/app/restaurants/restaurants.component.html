@@ -1,0 +1,28 @@
+<div class="container">
+  <h1> New Speciality Registration </h1>
+  <form #specialityForm="ngForm" (ngSubmit)="onSpecialityCreate(specialityForm.value)">
+    <div class="form-group">
+      <label> Speciality</label>
+      <input name = "speciality" type="text" class="form-control" [(ngModel)]="speciality">
+    </div>
+    <div class="form-group">
+      <label> Country </label>
+      <input name = "country" type="text" class="form-control" [(ngModel)]="country" >
+    </div>
+    <div class="form-group">
+      <label> City </label>
+      <input name = "capital" type="text" class="form-control" [(ngModel)]="capital" >
+    </div>
+    <pre></pre>
+    <div class="form-group">
+      <label> Latitude </label>
+      <input name = "latitude" type="text" class="form-control" [(ngModel)]="latitude" >
+    </div>
+    <div class="form-group">
+      <label> Longitude </label>
+      <input name = "longitude" type="text" class="form-control" [(ngModel)]="longitude">
+    </div>
+    <button class = "btn btn-primary" type="submit">Submit</button>
+    <button class = "btn btn-info" type="button" onclick="history.go(0)">Refresh</button>
+  </form>
+</div>

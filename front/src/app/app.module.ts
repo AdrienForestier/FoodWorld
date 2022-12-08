@@ -4,26 +4,29 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
+
 import { MapComponent } from './map/map.component';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { RegisterRestaurantComponent } from './register-restaurant/register-restaurant.component';
 import { MatDialogModule } from "@angular/material/dialog";
+import {HttpClientModule} from "@angular/common/http";
+import { RestaurantsComponent } from './restaurants/restaurants.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    FooterComponent,
     MapComponent,
-    RegisterRestaurantComponent
+    RestaurantsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    MatDialogModule
+    MatDialogModule,
+    FormsModule
 
   ],
   providers: [],
